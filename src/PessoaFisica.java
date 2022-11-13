@@ -12,29 +12,72 @@ public class PessoaFisica extends Pessoa {
         this.idade = idade;
     }
     
-    public static PessoaFisica pesquisaPF(PessoaFisica[] todosPF, int[] cont, String conta) {
+//    public static int pesquisaPF(PessoaFisica[] todosPF, int cont, String conta) {
+//        boolean encontrado = false;
+//        for (int i = 0; i < cont; i++) {
+//            if (todosPF[i] != null && todosPF[i].getConta().equals(conta)) {
+//                encontrado = true;
+//                return i;
+//            }
+//        }
+//        if (!encontrado) {
+//            System.out.println("Cliente nao encontrado!");
+//        }
+//        return -1;
+//    }
+    
+    public static int pesquisaPF(PessoaFisica[] todosPF, int cont, String conta) {
         boolean encontrado = false;
-        for (int i = 0; i < cont[0]; i++) {
-            if (todosPF[i].getConta().equals(conta)) {
+        for (int i = 0; i < cont; i++) {
+            if (todosPF[i] != null && todosPF[i].getConta().equals(conta)) {
                 encontrado = true;
-                return todosPF[i];
+                return i;
             }
         }
         if (!encontrado) {
             System.out.println("Cliente nao encontrado!");
         }
-        return null;
+        return -1;
     }
     
-    static void imprimePF(PessoaFisica p) {
-        System.out.println("CPF: " + p.getCpf());
-        System.out.println("Nome: " + p.getNome());
-        System.out.println("Idade: " + p.getIdade());
-        System.out.println("Conta: " + p.getConta());
-        System.out.println("Agencia: " + p.getAgencia());
-        System.out.println("Telefone: " + p.getTelefone());
-        System.out.println("Saldo: " + p.getSaldo());
-        System.out.println("Limite do cheque especial: " + p.getLimiteChequeE());
+//    void imprimePF(int p, PessoaFisica[] todosPF) {
+//        System.out.println("CPF: " + todosPF[p].getCpf());
+//        System.out.println("Nome: " + todosPF[p].getNome());
+//        System.out.println("Idade: " + todosPF[p].getIdade());
+//        System.out.println("Conta: " + todosPF[p].getConta());
+//        System.out.println("Agencia: " + todosPF[p].getAgencia());
+//        System.out.println("Telefone: " + todosPF[p].getTelefone());
+//        System.out.println("Saldo: " + todosPF[p].getSaldo());
+//        System.out.println("Limite do cheque especial: " + todosPF[p].getLimiteChequeE());
+//    }
+    void imprimePF() {
+        System.out.println("CPF: " + getCpf());
+        System.out.println("Nome: " + getNome());
+        System.out.println("Idade: " + getIdade());
+        System.out.println("Conta: " + getConta());
+        System.out.println("Agencia: " + getAgencia());
+        System.out.println("Telefone: " + getTelefone());
+        System.out.println("Saldo: " + getSaldo());
+        System.out.println("Limite do cheque especial: " + getLimiteChequeE());
+    }
+    
+    static void alteraPessoa(int p, PessoaFisica[] todosPF) {
+        
+    }
+    
+    static void removePessoaPF(int p, PessoaFisica[] todosPF) {
+        todosPF[p] = null;
+        System.out.println("Cliente removido com sucesso!");
+    }
+    
+    static void ajustLimitePF(int p, PessoaFisica[] todosPF, double valor) {
+        todosPF[p].setLimiteChequeE(valor);
+        System.out.println("Limite alterado com sucesso!");
+    }
+    
+    static void depositaPF(int p, PessoaFisica[] todosPF, double valor) {
+        todosPF[p].setSaldo(todosPF[p].getSaldo() + valor);
+        System.out.println("Deposito realizado com sucesso!");
     }
 
     public String getCpf() {
