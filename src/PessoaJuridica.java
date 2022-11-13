@@ -1,5 +1,6 @@
 
 public class PessoaJuridica extends Pessoa {
+
     private String cnpj;
     private String[] nome;
     private String razaoSocial;
@@ -11,6 +12,34 @@ public class PessoaJuridica extends Pessoa {
         this.nome = nome;
         this.razaoSocial = razaoSocial;
         this.nomeFantasia = nomeFantasia;
+    }
+    
+    public static PessoaJuridica pesquisaPJ(PessoaJuridica[] todosPJ, int[] cont, String conta) {
+        boolean encontrado = false;
+        for (int i = 0; i < cont[0]; i++) {
+            if (todosPJ[i].getConta().equals(conta)) {
+                encontrado = true;
+                return todosPJ[i];
+            }
+        }
+        if (!encontrado) {
+            System.out.println("Cliente nao encontrado!");
+        }
+        return null;
+    }
+    
+    static void imprimePJ(PessoaJuridica pj) {
+        System.out.println("CPF: " + pj.getCnpj());
+        System.out.println("Nome: " + pj.getNome()[0]);
+        System.out.println("Nome: " + pj.getNome()[1]);
+        System.out.println("Nome: " + pj.getNome()[2]);
+        System.out.println("Idade: " + pj.getRazaoSocial());
+        System.out.println("Conta: " + pj.getNomeFantasia());
+        System.out.println("Agencia: " + pj.getConta());
+        System.out.println("Agencia: " + pj.getAgencia());
+        System.out.println("Telefone: " + pj.getTelefone());
+        System.out.println("Saldo: " + pj.getSaldo());
+        System.out.println("Limite do cheque especial: " + pj.getLimiteChequeE());
     }
 
     public String getCnpj() {
